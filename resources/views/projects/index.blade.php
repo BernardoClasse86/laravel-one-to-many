@@ -83,7 +83,6 @@
                     <th>project link</th>
                     <th>project edit</th>
                     <th>project delete</th>
-                    <th>delete infos</th>
                     <th>project restore</th>
 
                 </tr>
@@ -109,7 +108,7 @@
                             <input class="btn btn-sm btn-danger" type="submit" value='Delete'>
                         </form>
                     </td>
-                    <td>{{$project->trashed() ? $project->deleted_at->format('d M Y') : ''}}</td>
+                    
                     <td>
                         @if ($project->trashed())
                         <form action="{{route('projects.restore', $project)}}" method="POST">
