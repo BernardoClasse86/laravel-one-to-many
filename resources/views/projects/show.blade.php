@@ -7,7 +7,13 @@
 
             <div class="my-row heading">
                 <img class="project-thumb" src="/images/default-project.png" alt="computer-thumb">
+                @if ($project->type)
+                <div><span class="badge text-bg-info">{{$project->type->name}}</span></div>
+                @endif
+
+                @if ($project->client_name)
                 <div><strong>Client:</strong> {{$project->client_name}}</div>
+                @endif
             </div>
 
             <div class="my-row details">
@@ -55,5 +61,34 @@
             
         </div>
 
+    </div>
+
+    <div class="container pt-4">
+        
+        <h3 class="mb-3">Related Works:</h3>
+
+        @if($project->type)
+
+        <ul class="list-group">
+
+            @foreach($project->type->projects as $work_type)
+
+                <li class="list-group-item">
+
+                    <a href="{{ route('projects.show',$work_type)}}">
+
+                        {{ $work_type->title }}
+
+                    </a>
+
+                </li>
+
+            @endforeach
+
+        </ul>
+
+        @else
+            <p>No Related works found</p>
+        @endif
     </div>
 @endsection

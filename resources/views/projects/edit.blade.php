@@ -27,6 +27,21 @@
                 <label for="description" class="col-form-label">Project description</label>
                 <textarea class="form-control" id="description" name="description" cols="30" rows="10">{{old('description', $project->descrpition)}}</textarea>
             </div>
+
+            <div class="mb-3">
+                <label for="type-id" class="form-label">Work Types</label>
+                <select class="form-select @error('type_id') is-invalid @enderror" id="type-id" name="type_id" aria-label="Default select example">
+                  <option value="" selected>Choose a work type</option>
+                  @foreach ($types as $type)
+                    <option @selected( old('type_id', $project->type_id) == $type->id ) value="{{ $type->id }}">{{ $type->name }}</option>
+                  @endforeach
+                </select>
+                @error('type_id')
+                  <div class="invalid-feedback">
+                      {{ $message }}
+                  </div>
+                @enderror
+            </div>
     
             <div class="mb-3">
                 <label for="project_url" class="col-form-label">Project URL</label>

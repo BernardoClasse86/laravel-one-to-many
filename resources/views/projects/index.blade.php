@@ -78,6 +78,7 @@
 
                     <th>id</th>
                     <th>title</th>
+                    <th>type</th>
                     <th>client name</th>
                     <th style="width: 120px">project date</th>
                     <th>project link</th>
@@ -97,6 +98,7 @@
 
                     <td>{{$project->id}}</td>
                     <td>{{$project->title}}</td>
+                    <td>{{$project->type ? $project->type->name : '/'}}</td>
                     <td>{{$project->client_name}}</td>
                     <td>{{$project->project_date}}</td>
                     <td><a class="btn btn-sm btn-secondary" href="{{route('projects.show', $project)}}">Project Link</a></td>
