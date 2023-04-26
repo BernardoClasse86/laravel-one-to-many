@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +29,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    //restore
     Route::post('/projects/{project:slug}/restore', [ProjectController::class, 'restore'])->name('projects.restore')->withTrashed();
+    Route::post('/types/{type:slug}/restore', [TypeController::class, 'restore'])->name('types.restore')->withTrashed();
+
+    //routes
+    Route::resource('types', TypeController::class)->parameters([
+        'types' => 'type:slug'
+    ])->withTrashed(['show', 'edit', 'update', 'destroy']);
 
     Route::resource('projects', ProjectController::class)->parameters([
         'projects' => 'project:slug'

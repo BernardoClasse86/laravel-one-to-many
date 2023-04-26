@@ -1,6 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <div class="container">
+        @if(request()->session()->exists('restore_message'))
+        <div class="container pt-3">
+            <div class="alert fixed alert-success" role="alert">
+                {{request()->session()->pull('restore_message')}}
+            </div>
+        </div>
+        @endif
+    
+        @if((request()->session()->exists('delete_message')))
+        <div class="container pt-3">
+            <div class="alert fixed alert-warning" role="alert">
+                {{request()->session()->pull('delete_message')}}
+            </div>
+        </div>
+        @endif
+    
+        @if((request()->session()->exists('full_delete_message')))
+        <div class="container pt-3">
+            <div class="alert fixed alert-danger" role="alert">
+                {{request()->session()->pull('full_delete_message')}}
+            </div>
+        </div>
+        @endif
+    </div>
+
     <div class="my-container">
 
         <div class="my-card">

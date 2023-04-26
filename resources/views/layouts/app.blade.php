@@ -50,6 +50,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('projects.index')}}">{{__('Your Projects')}}</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a href="{{route('types.index')}}" class="nav-link">{{__('Your Work Types')}}</a>
+                            </li>
                         @endauth
                     </ul>
 
